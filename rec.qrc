@@ -1,5 +1,7 @@
 <RCC>
-    <qresource prefix="/rec">
+    <qresource prefix="/">
+        <file>data/icon.ico</file>
+        <file>data/preview.png</file>
         <file>data/sound-info.wav</file>
     </qresource>
 </RCC>

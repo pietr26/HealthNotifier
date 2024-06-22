@@ -27,3 +27,6 @@ RC_ICONS = data/icon.ico
 
 RESOURCES += \
     rec.qrc
+
+DISTFILES += \
+    README.md
