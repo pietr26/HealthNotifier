@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/rec">
+        <file>data/sound-info.wav</file>
+    </qresource>
+</RCC>
