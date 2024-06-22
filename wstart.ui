@@ -49,7 +49,7 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="rec.qrc">:/data/icon.ico</pixmap>
+         <pixmap resource="rec.qrc">:/data/preview.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -73,6 +73,24 @@
        </spacer>
       </item>
      </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="lblInfo">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;▲▲ Do &lt;span style=&quot; font-weight:700; text-decoration: underline;&quot;&gt;not&lt;/span&gt; sit like this cute cat! ▲▲&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::RichText</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="Line" name="line">
@@ -99,7 +117,7 @@
       <item>
        <widget class="QLabel" name="lblTimerValue1">
         <property name="text">
-         <string>Timer value between</string>
+         <string>Timer between</string>
         </property>
        </widget>
       </item>
