@@ -2,7 +2,8 @@
 #define WSTART_H
 
 #include <QMainWindow>
-#include <QSoundEffect>
+#include <QMediaPlayer>
+#include <QAudioOutput>
 #include <QTimer>
 #include <QRandomGenerator>
 #include <QSystemTrayIcon>
@@ -27,7 +28,8 @@ private slots:
 private:
     Ui::wStart *ui;
 
-    QSoundEffect sound;
+    QAudioOutput audioOutput;
+    QMediaPlayer player;
     QSystemTrayIcon trayIcon;
 };
 #endif // WSTART_H

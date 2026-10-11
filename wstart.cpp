@@ -9,7 +9,8 @@ wStart::wStart(QWidget *parent)
     , ui(new Ui::wStart)
 {
     ui->setupUi(this);
-    sound.setSource(QUrl("qrc:/data/sound-info.wav"));
+    player.setAudioOutput(&audioOutput);
+    player.setSource(QUrl("qrc:/data/sound-info.wav"));
     ui->lblPicture->setVisible(false);
     ui->lblInfo->setVisible(false);
 
@@ -48,7 +49,7 @@ void wStart::on_btnStart_clicked()
         this, [=]()
            {
                trayIcon.hide();
-               sound.play();
+               player.play();
                showNormal();
                raise();
                activateWindow();
