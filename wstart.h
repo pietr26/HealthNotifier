@@ -5,6 +5,7 @@
 #include <QSoundEffect>
 #include <QTimer>
 #include <QRandomGenerator>
+#include <QSystemTrayIcon>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,5 +28,6 @@ private:
     Ui::wStart *ui;
 
     QSoundEffect sound;
+    QSystemTrayIcon trayIcon;
 };
 #endif // WSTART_H

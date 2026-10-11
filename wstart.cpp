@@ -1,6 +1,9 @@
 #include "wstart.h"
 #include "ui_wstart.h"
 
+#include <QApplication>
+#include <QMenu>
+
 wStart::wStart(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::wStart)
@@ -9,6 +12,12 @@ wStart::wStart(QWidget *parent)
     sound.setSource(QUrl("qrc:/data/sound-info.wav"));
     ui->lblPicture->setVisible(false);
     ui->lblInfo->setVisible(false);
+
+    QMenu *trayMenu = new QMenu(this);
+    trayMenu->addAction("Quit", qApp, &QApplication::quit);
+    trayIcon.setIcon(QIcon(":/data/icon.ico"));
+    trayIcon.setToolTip("HealthNotifier - waiting...");
+    trayIcon.setContextMenu(trayMenu);
 }
 
 wStart::~wStart()
@@ -18,7 +27,14 @@ wStart::~wStart()
 
 void wStart::on_btnStart_clicked()
 {
-    showMinimized();
+    if (QSystemTrayIcon::isSystemTrayAvailable())
+    {
+        trayIcon.show();
+        hide();
+    }
+    else
+        showMinimized();
+
     ui->btnStart->setEnabled(false);
     ui->lblPicture->setVisible(false);
     ui->lblInfo->setVisible(false);
@@ -31,10 +47,11 @@ void wStart::on_btnStart_clicked()
     QTimer::singleShot(delay,
         this, [=]()
            {
-               showMinimized();
+               trayIcon.hide();
                sound.play();
                showNormal();
-               setFocus();
+               raise();
+               activateWindow();
                ui->btnStart->setEnabled(true);
                ui->lblPicture->setVisible(true);
                ui->lblInfo->setVisible(true);
