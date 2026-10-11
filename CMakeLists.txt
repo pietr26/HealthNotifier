@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Multimedia)
 
 qt_standard_project_setup()
+set(CMAKE_AUTORCC ON)
 
 set(PROJECT_SOURCES
     main.cpp

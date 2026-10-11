@@ -6,7 +6,7 @@ wStart::wStart(QWidget *parent)
     , ui(new Ui::wStart)
 {
     ui->setupUi(this);
-    sound.setSource(QUrl::fromLocalFile(":/data/sound-info.wav"));
+    sound.setSource(QUrl("qrc:/data/sound-info.wav"));
     ui->lblPicture->setVisible(false);
     ui->lblInfo->setVisible(false);
 }
@@ -24,7 +24,11 @@ void wStart::on_btnStart_clicked()
     ui->lblInfo->setVisible(false);
     ui->statusbar->showMessage("Coding, coding, coding...");
 
-    QTimer::singleShot(QRandomGenerator::global()->bounded(ui->sbxMin->value() * 1000 * 60, ui->sbxMax->value() * 1000 * 60),
+    const int minMs = qMin(ui->sbxMin->value(), ui->sbxMax->value()) * 1000 * 60;
+    const int maxMs = qMax(ui->sbxMin->value(), ui->sbxMax->value()) * 1000 * 60;
+    const int delay = minMs == maxMs ? minMs : QRandomGenerator::global()->bounded(minMs, maxMs);
+
+    QTimer::singleShot(delay,
         this, [=]()
            {
                showMinimized();
