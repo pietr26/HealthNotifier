@@ -6,6 +6,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    QApplication::setWindowIcon(QIcon(":/data/icon.ico"));
+
     wStart w;
     w.show();
 
